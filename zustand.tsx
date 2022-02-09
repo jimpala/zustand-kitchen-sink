@@ -9,6 +9,7 @@ type State = {
 export const useStore = create<State>((set, get) => ({
   count: 0,
   // @TODO: NOTES/ It isn't safe to call get() when not in a setter, because of initialisation.
+  // For derived state, just make another hook that calls useStore().
   increase: (by) => {
     console.log(`Updating from previous state of ${get().count}`)
     set((state) => ({count: state.count + by}));
